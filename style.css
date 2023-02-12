@@ -1,0 +1,84 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  margin: 0;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background-color: lightblue;
+  padding: 20px;
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+}
+
+.blue-button {
+  background-color: blue;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  margin: 0 20px;
+  cursor: pointer;
+}
+
+
+h1, h2 {
+  margin: 0;
+}
+
+main {
+  margin-top: 100px;
+  width: 500px;
+  text-align: left;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 50px;
+}
+
+form div {
+  margin-bottom: 20px;
+}
+
+form label {
+  width: 150px;
+}
+
+form input[type="text"], form textarea, form select {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid gray;
+}
+
+form input[type="submit"] {
+  background-color: blue;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+ 
+}
+
+li {
+  list-style: none;
+  margin-top: 1rem;
+}
+
+a {
+  background-color: blue;
+  color: white;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  border-radius: 5px;
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Users Page</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>USERS</h1>
+  </header>
+  <main>
+    <div class="users-container">
+      <label for="user-dropdown">Select User:</label>
+      <select id="user-dropdown"></select>
+    </div>
+  </main>
+
+  <script>
+    // Open a database
+    var db;
+    var request = window.indexedDB.open("users", 1);
+    
+    request.onerror = function(event) {
+      console.log("Error opening the database", event);
+    };
+    
+    request.onsuccess = function(event) {
+      db = event.target.result;
+      console.log("Database opened successfully");
+
+      // Get the data from the database
+      var transaction = db.transaction("users");
+      var objectStore = transaction.objectStore("users");
+      var request = objectStore.getAll();
+      
+      request.onsuccess = function(event) {
+        var users = event.target.result;
+        var userDropdown = document.getElementById("user-dropdown");
+
+        // Populate the dropdown with email addresses
+        users.forEach(function(user) {
+          var option = document.createElement("option");
+          option.value = user.email;
+          option.text = user.email;
+          userDropdown.add(option);
+        });
+      };
+    };
+  </script>
+</body>
+</html>

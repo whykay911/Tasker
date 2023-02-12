@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Taskers Login</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>TASKERS LOGIN</h1>
+  </header>
+  <main>
+    <form id="login-form">
+      <div>
+        <label for="username">Username:</label>
+        <input type="text" id="username" required>
+      </div>
+      <div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" required>
+      </div>
+      <input type="submit" value="Submit">
+    </form>
+  </main>
+  <script>
+    const form = document.getElementById("login-form");
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const username = form.elements.username.value;
+      const password = form.elements.password.value;
+      if (username === "admin" && password === "password") {
+        window.location.href = "admin.html";
+      } else {
+        alert("Incorrect username or password.");
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Create Task</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>TASKERS</h1>
+  </header>
+  <main>
+    <h2>Create Task</h2>
+    <form id = "task-form" action="#">
+      <div>
+        <label for="name">Task Name:</label>
+        <input type="text" id="name" name="name">
+      </div>
+      <div>
+        <label for="description">Task Description:</label>
+        <textarea id="description" name="description"></textarea>
+      </div>
+      <div>
+        <label for="assignTo">Assign To:</label>
+        <select id="assignTo" name="assignTo">
+          <option value="">-- Select an member --</option>
+        </select>
+      </div>
+      <div>
+        <label for="startDate">Task Start Date:</label>
+        <input type="date" id="startDate" name="startDate">
+      </div>
+      <div>
+        <label for="endDate">Task End Date:</label>
+        <input type="date" id="endDate" name="endDate">
+      </div>
+      <div>
+        <input type="submit" value="Submit">
+      </div>
+    </form>
+  </main>
+  <script src="task-form.js"></script>
+</body>
+</html>

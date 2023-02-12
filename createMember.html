@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Taskers Members</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>TASKERS MEMBERS</h1>
+  </header>
+  <main>
+    <form id="register-form">
+      <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" required>
+      </div>
+      <div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" required>
+      </div>
+      <div>
+        <label for="passwordRetyped">Retype Password:</label>
+        <input type="password" id="passwordRetyped" required>
+      </div>
+      <input type="submit" value="Submit">
+    </form>
+  </main>
+  <script>
+    const form = document.getElementById("register-form");
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const email = form.elements.email.value;
+      const password = form.elements.password.value;
+      const passwordRetype = form.elements.passwordRetyped.value;
+      if (password !== passwordRetype) {
+        alert("Passwords do not match.");
+      } else {
+        // Save user information to IndexedDB
+        const request = window.indexedDB.open("taskDatabase", 3);
+        request.onsuccess = function(event) {
+          const db = event.target.result;
+          const transaction = db.transaction("members", "readwrite");
+          const usersStore = transaction.objectStore("members");
+          usersStore.put({ email: email, password: password });
+        };
+        request.onupgradeneeded = function(event) {
+          const db = event.target.result;
+          const usersStore = db.createObjectStore("members", { keyPath: "email" });
+        };
+        alert("User added successfully.");
+      }
+    });
+  </script>
+</body>
+</html>
